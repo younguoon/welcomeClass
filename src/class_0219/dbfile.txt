@@ -1,0 +1,3 @@
+aaa@test.com = aaaaa
+adhong@text.com = adhong
+young@naver.com = young
