@@ -1,4 +1,4 @@
-package class_2022;
+package class_0222;
 
 public class JUnitExampleMain {
 

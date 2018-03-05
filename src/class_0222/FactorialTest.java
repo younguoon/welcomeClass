@@ -1,4 +1,4 @@
-package class_2022;
+package class_0222;
 
 import static org.junit.Assert.assertEquals;
 
