@@ -1,3 +1,110 @@
+0sook : 윈도우패스워드
+
+webgoat : 
+
+
+
+
+id [ admin'# ]
+pw [b'#]
+
+>> login.do?id=admin'#&pw=b'#
+>> select * from users where id= 'admin'#' and pw = 'b'#'
+
+>> SQL 삽입(injection) 취약점을 이용한 인증과정 우회
+
+
+입력값 검증
+
+1) 정규화/규범화
+2) 새니타이즈
+3) 검증
+
+  100 dollars / 일백달러    ==> $100
+  <a>100</a>    <b>200</b>  ==> <a>100<a/><b>200</b>
+
+  input = "      <ScRiPt>     ";
+  >>> "<ScRiPt>"
+  >>> "<script>"   : 전부 소문자로 바꿔서 검증하는 로직 필요
+  
+  if("<script>".equals(input)) {....}
+  
+인젝션(Injection) = 삽입 취약점
+입력 -> 처리 -> 출력  
+
+[SQL injection 종류]
+select * from users where id='___' and pw='___';
+1) Form based SQLi
+2) Error based SQLi >>> a' and db_name() = 1 --
+                    >>> "dvwa"는 숫자형 데이터로 변환할 수 없습니다.
+3) Stored Procedure >>> a'; exec .....; --
+4) UNION based SQLi >>> 
+
+동이름 : [ abc  ]
+>>> search.jsp?dong=abc' union select ... ~
+>>> select * from address where dong = 'abc' union select ... ~                   
+
+	순번	동이름	우편번호 ...
+	1	서초동	1234
+	2	구로동	4321
+
+5) Bliend SQLi
+>>> list.jsp?pno=1   >>> 1페이지 목록
+>>> list.jsp?pno=999 >>> "존재하지 않는 데이타..."
+
+>>> list.jsp?pno=1 and 1=1  >>> 1페이지 목록
+>>> list.jsp?pno=1 and 1=2  >>> "존재하지 않는 데이타..."
+
+>>> list.jsp?pno=1 and (select ...) >>> 1페이지 목록 : 내 쿼리 true
+                                    >>> "존재하지 ..." 내 쿼리 false
+
+
+
+
+
+
+
+
+
+
+
+
+
+wc_java(git)
+
+https://goo.gl/NUkg8Q
+[3.12]
+- *** 메소드 추출기법 **
+- inline method : 너무 단순해서 이름만봐도 너무 뻔할 때
+- 어서션 도입 : 만족하는지 여부를 체크하는 로직
+- 매직 넘버를 기호 상수로 치환
+- 치환 : 기호상수, 클래스정의, enum, 
+- ***** TDD(그림) - need 요구사항 -> test -> refactoring =0;
+ > 생산성 향상, 단순함 극대화
+ - 어노테이션 : timeout(3000)
+ - JUnit Method : assertEquals(타입 같아야한다), 
+ - test코드 적합한 것(test코드 예시)
+  > expected :  음수가 들어왔을 때 예외처리 여부 확인하는 테스트
+	1. ignore
+	2. asserArrayequals
+	3. assertEquals
+	4. test(exptected= runtimeException.class)
+		asserEquals(0,0/0)
+		int[] result = {1,2,3};
+		new int[] {1,2,3}
+
+- 삼항연산자 - do-while보다는 while-do로 쓰는게 읽는데 도움이 된다
+- 가급적 go-to를 사용x
+- 설명 변수
+- 요약 변수
+- 쇼트 서킷 논리
+- 자바스크립트 변수 : 자세히 알아볼 것
+  > 지역버위, 전역범위
+  > 지역변수 - 블록 수준 범위를 지원하지 않음*****
+  > 클로저 : 외부함수에 접근할 수 있는 내부함수
+    > 함수 팩토리로 활용 ***
+
+
 [03.05]
 실기 : PDF(5회분) - 자바스크립트x
 필기 : 자바스크립트o(15일)
